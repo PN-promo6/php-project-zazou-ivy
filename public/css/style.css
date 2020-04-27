@@ -1,28 +1,29 @@
 body{
 
-   background-color: white; 
+   background-color: #EFF3F5; 
    font-family: "lato", sans-serif;
 }
 
 h1{
-margin: 20px;
+margin-top: 70px;;
 text-align: center;
-color: white;
-
+color: black;
+vertical-align: middle;
+font-family: 'Skranji', cursive;
 }
 
 #image{
-   background-image: url("../images/cowboy.jpg");
-background-repeat: no-repeat;
+   background-image: url("../images/manga5.jpg");
+   background-repeat: no-repeat;
+   background-attachment: fixed;
 }
 
 header{
-
-   height: 200px;
+   height: 500px;
 }
 
 #logo{
    font-family: 'Cabin Sketch', cursive;
    color: tomato;
-   font-size: x-large;
+   font-size: 2rem;
 }
