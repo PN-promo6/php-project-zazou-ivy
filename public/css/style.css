@@ -1,13 +1,13 @@
 body{
 
-   background-color: #EFF3F5; 
+   /* background-image:  url("../images/motifs.jpeg"); */
+   background-color: #F7F7F7; 
    font-family: "lato", sans-serif;
 }
 
 h1{
-margin-top: 70px;;
 text-align: center;
-color: black;
+color:#ee7a7a;
 vertical-align: middle;
 font-family: 'Skranji', cursive;
 }
@@ -19,11 +19,21 @@ font-family: 'Skranji', cursive;
 }
 
 header{
-   height: 500px;
+   margin-top: 70px;
+   height: 600px;
 }
 
 #logo{
    font-family: 'Cabin Sketch', cursive;
    color: tomato;
    font-size: 2rem;
+}
+
+#title{
+color: #073762;
+}
+
+#topWeek{
+text-align: center;
+margin: 30px;
 }

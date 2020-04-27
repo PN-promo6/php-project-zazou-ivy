@@ -21,8 +21,8 @@ $opening1->anime = "Naruto";
 $opening1->song = " Seishun Kyousoukyoku";
 $opening1->group = "Sambomaster";
 $opening1->description = "Ma vie cette chanson !!";
-$opening1->$url_song = "https://www.youtube.com/watch?v=lilv4MvBY6E";
-$opening1->$picture = "https://schizoidmouse.files.wordpress.com/2017/05/hqdefault-2.jpg";
+$opening1->url_song = "https://www.youtube.com/watch?v=lilv4MvBY6E";
+$opening1->picture = "https://schizoidmouse.files.wordpress.com/2017/05/hqdefault-2.jpg";
 
 $opening2 = new Opening();
 $opening2->id = 2;
@@ -30,8 +30,8 @@ $opening2->anime = "Erased";
 $opening2->song = " Boku dake ga inai machi";
 $opening2->group = "Re:Re";
 $opening2->description = "HIHHIHIHIHIHI !!";
-$opening2->$url_song = "https://www.youtube.com/watch?v=Y9G20wV0KHE&t=1s";
-$opening2->$picture = "https://media.senscritique.com/media/000012913527/1200/Erased.jpg";
+$opening2->url_song = "https://www.youtube.com/watch?v=Y9G20wV0KHE&t=1s";
+$opening2->picture = "https://media.senscritique.com/media/000012913527/1200/Erased.jpg";
 
 $opening3 = new Opening();
 $opening3->id = 3;
@@ -39,8 +39,8 @@ $opening3->anime = "Ergo Proxy";
 $opening3->song = "Kiri";
 $opening3->group = "Monoral";
 $opening3->description = "Grâce à cet opening j'ai pu découvrir ce groupe. La chanson est magnifique.";
-$opening3->$url_song = "https://www.youtube.com/watch?v=oAXrRWLKzko";
-$opening3->$picture = "https://occ-0-531-1722.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABcPK0Hwl3RsWb3xefxq7rd8GTYkNpWuX2DXlNdOK2o1ovKLuH4Tsj9zlsB4nbNxDqGHBWCwvTuNLE-huIlw_Y1Zuqvuc.jpg?r=b79";
+$opening3->url_song = "https://www.youtube.com/watch?v=oAXrRWLKzko";
+$opening3->picture = "https://occ-0-531-1722.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABcPK0Hwl3RsWb3xefxq7rd8GTYkNpWuX2DXlNdOK2o1ovKLuH4Tsj9zlsB4nbNxDqGHBWCwvTuNLE-huIlw_Y1Zuqvuc.jpg?r=b79";
 
 $opening4 = new Opening();
 $opening4->id = 4;
@@ -48,8 +48,8 @@ $opening4->anime = "Noragami Aragoto";
 $opening4->song = "Hey kids";
 $opening4->group = "The oral cigarettes";
 $opening4->description = "🥰🥰🥰🥰🥰🥰🥰🥰🥰 ";
-$opening4->$url_song = "https://www.youtube.com/watch?v=C-o8pTi6vd8";
-$opening4->$picture = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQEcMAQGfBPUlHtbIigxtpwENTJnkWLUH3WAV8ITCF9qCB66INf&usqp=CAU";
+$opening4->url_song = "https://www.youtube.com/watch?v=C-o8pTi6vd8";
+$opening4->picture = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQEcMAQGfBPUlHtbIigxtpwENTJnkWLUH3WAV8ITCF9qCB66INf&usqp=CAU";
 
 $openings = array($opening1, $opening2, $opening3, $opening4);
 
@@ -97,35 +97,46 @@ $openings = array($opening1, $opening2, $opening3, $opening4);
         </div>
     </nav>
 
+    <!-- *************************HEADER********************************* -->
     <header id="image">
 
         <h1>Retrouvez vos meilleurs Openings d'anime !</h1>
 
     </header>
+
+    <!-- *********************************************************************** -->
+
+    <article id="topWeek">
+        <h2>
+            Top de la semaine</h2>
+    </article>
+
     <div class="container mt-4">
         <div class="row">
 
             <?php
-            foreach ($openings as $opening) {
-
-            ?>
-                <div class="card col-lg-4 mb-4 mx-5 shadow-sm">
+            foreach ($openings as $opening) { ?>
+                <div class="card col-lg-5 my-4 mx-4 shadow-sm">
                     <h4 class="my-0 font-weight-normal"><?php echo $opening->id; ?></h4>
                     <img src="<?php echo $opening->picture; ?>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <ul class="list-unstyled mt-3 mb-4">
                             <li>
-                                <h2><strong><?php echo $opening->anime; ?></strong></h2>
+                                <h2 id="title"><strong><?php echo $opening->anime; ?></strong></h2>
                             </li>
                             <li>
-                                <h5><?php echo $opening->song . " - " . $opening->group; ?></h5>
+                                <h5><strong>Titre : </strong><?php echo $opening->song; ?></h5>
                             </li>
                             <li>
-                                <h6><?php echo $opening->description; ?></h6>
+                                <h5><strong> Groupe : </strong><?php echo $opening->group; ?></h5>
+                            </li>
+                            <li>
+                                <h5><strong>Description : </strong><?php echo $opening->description; ?></h6>
                             </li>
                             <li><?php echo (parse_url($opening->$url_song)); ?></li>
                         </ul>
-                        <a href="#" class="btn btn-outline-primary">Add</a>
+                        <a href="#" class="btn btn-outline-primary">Add to list</a>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
             <?php  } ?>
@@ -193,6 +204,14 @@ $openings = array($opening1, $opening2, $opening3, $opening4);
         <!-- </div> -->
 
     </div>
+    <!-- ***************************************FOOTER******************************************** -->
+    <hr>
+    <footer class="blog-footer text-center">
+        <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
