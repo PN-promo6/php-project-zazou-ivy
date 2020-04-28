@@ -13,9 +13,9 @@ font-family: 'Skranji', cursive;
 }
 
 #image{
-   background-image: url("../images/manga5.jpg");
+   background-image: url("../images/manga4.jpg");
    background-repeat: no-repeat;
-   background-attachment: fixed;
+   /* background-attachment: fixed; */
 }
 
 header{

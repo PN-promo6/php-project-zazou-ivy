@@ -3,6 +3,7 @@
 namespace Entity;
 
 use Entity\User;
+use ludk\Utils\Serializer;
 
 class Opening
 {
@@ -14,4 +15,6 @@ class Opening
     public $url_song;
     public $picture;
     public User $user;
+
+    use Serializer;
 }
