@@ -2,16 +2,16 @@
     {
         "id": 1,
         "nickname": "haruka",
-        "password": "xxxxxxxx"
+        "password": "pwd1"
     },
     {
         "id": 2,
         "nickname": "Kaori",
-        "password": "xxxxxxxx"
+        "password": "pwd2"
     },
     {
         "id": 3,
         "nickname": "Sanji",
-        "password": "xxxxx"
+        "password": "pwd3"
     }
 ]
