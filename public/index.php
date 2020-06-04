@@ -50,7 +50,7 @@
                                 $user = new User();
                                 $user->nickname = $_POST['username'];
                                 $user->password = $_POST['password'];
-                                $user->contact = "";
+                                // $user->contact = "";
                                 $manager->persist($user);
                                 $manager->flush();
                                 $_SESSION['user'] = $user;
