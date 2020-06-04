@@ -7,13 +7,13 @@ body{
 
 h1{
 text-align: center;
-color:#ee7a7a;
+color:white;
 vertical-align: middle;
 font-family: 'Skranji', cursive;
 }
 
 #image{
-   background-image: url("../images/all2.jpg");
+   background-image: url("../images/manga8.jpeg");
    background-repeat: no-repeat;
    background-position: center;
    /* background-attachment: fixed; */
