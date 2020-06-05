@@ -14,7 +14,15 @@ class OpeningController extends AbstractController
     public function create(Request $request): Response
     {
         $manager = $this->getOrm()->getManager();
-        if ($request->request->has("anime") && $request->request->has("song") && $request->request->has("group") && $request->request->has("description") && $request->request->has("url_song") && $request->request->has("picture") && $request->getSession()->has('user')) {
+        if (
+            $request->request->has("anime") && !empty($request->request->get("anime")) &&
+            $request->request->has("song") && !empty($request->request->get("song")) &&
+            $request->request->has("group") && !empty($request->request->get("group")) &&
+            $request->request->has("description") && !empty($request->request->get("description")) &&
+            $request->request->has("url_song") && !empty($request->request->get("url_song")) &&
+            $request->request->has("picture") && !empty($request->request->get("picture")) &&
+            $request->getSession()->has('user')
+        ) {
             $newOpening = new Opening();
             $newOpening->anime = $request->request->get("anime");
             $newOpening->song = $request->request->get("song");
