@@ -79,8 +79,7 @@
         </h2>
     </article>
     <?php if (isset($_SESSION['user'])) { ?>
-
-        <?php include "../templates/new.php" ?>
+        {% include '../templates/new.php' %}
 
     <?php } ?>
 

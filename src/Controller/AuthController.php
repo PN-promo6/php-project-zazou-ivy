@@ -2,75 +2,79 @@
 
 namespace Controller;
 
+use display;
 use Entity\User;
+use ludk\Http\Request;
+use ludk\Http\Response;
+use ludk\Controller\AbstractController;
 
-class AuthController
+class AuthController extends AbstractController
 {
 
-    public function login()
+    public function login(Request $request): Response
     {
-        global $userRepo;
-        if (isset($_POST['username']) && isset($_POST['password'])) {
-            $usersWithThisLogin = $userRepo->findBy(array("nickname" => $_POST['username']));
+        $userRepo = $this->getOrm()->getRepository(User::class);
+        if ($request->request->has("username") && $request->request->has("password")) {
+            $usersWithThisLogin = $userRepo->findBy(array("nickname" => $request->request->get("username")));
             if (count($usersWithThisLogin) == 1) {
                 $firstUserWithThisLogin = $usersWithThisLogin[0];
-                if ($firstUserWithThisLogin->password != ($_POST['password'])) {
-                    $errorMsg = "Wrong password.";
-                    include "../templates/loginForm.php";
+                if ($firstUserWithThisLogin->password != ($request->request->get("password"))) {
+                    return $this->render("loginForm.php", array("errorMsg" => "Wrong password"));
                 } else {
-                    $_SESSION['user'] = $usersWithThisLogin[0];
-                    header('Location:/display');
+                    // $_SESSION['user'] = $usersWithThisLogin[0];
+                    $request->getSession()->set('user', $usersWithThisLogin[0]);
+                    return $this->redirectToRoute('display');
                 }
             } else {
-                $errorMsg = "Nickname doesn't exist.";
-                include "../templates/loginForm.php";
+                return $this->render("loginForm.php", array("errorMsg" => "Nickname doesn't exist."));
             }
         } else {
-            include "../templates/loginForm.php";
+            return $this->render("loginForm.php");
         }
     }
 
-    public function logout()
+    public function logout(Request $request): Response
     {
-        if (isset($_SESSION['user'])) {
-            unset($_SESSION['user']);
+        if ($request->getSession()->has('user')) {
+            $request->getSession()->remove('user');
         }
-        header('Location: /display');
+        return $this->redirectToRoute('display');
     }
 
-    public function register()
+    public function register(Request $request): Response
     {
-        global $userRepo;
-        global $manager;
+        $userRepo = $this->getOrm()->getRepository(User::class);
+        $manager = $this->getOrm()->getManager();
 
-        if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['passwordRetype'])) {
-            $errorMsg = NULL;
-            $users = $userRepo->findBy(array("nickname" => $_POST['username']));
+        if ($request->request->has("username") && $request->request->has("password") && $request->request->has("passwordRetype")) {
+            $error = NULL;
+            $users = $userRepo->findBy(array("nickname" => $request->request->get("username")));
 
             if (count($users) > 0) {
-                $errorMsg = "Nickname already used.";
-            } else if ($_POST['password'] != $_POST['passwordRetype']) {
-                $errorMsg = "Passwords are not the same.";
-            } else if (strlen(trim($_POST['password'])) < 8) {
-                $errorMsg = "Your password should have at least 8 characters.";
-            } else if (strlen(trim($_POST['username'])) < 4) {
-                $errorMsg = "Your nickame should have at least 4 characters.";
+                $error = "Nickname already used.";
+            } else if ($request->request->get("password") != $request->request->get("passwordRetype")) {
+                $error = "Passwords are not the same.";
+            } else if (strlen(trim($request->request->get("password"))) < 8) {
+                $error = "Your password should have at least 8 characters.";
+            } else if (strlen(trim($request->request->get("username"))) < 4) {
+                $error = "Your nickame should have at least 4 characters.";
             }
-            if ($errorMsg) {
-                include "../templates/registerForm.php";
+            if ($error) {
+                $data = array(
+                    "errorMsg" => $error
+                );
+                return $this->render('registerForm.php', $data);
             } else {
-                // $userId = CreateNewUser($_POST['username'], $_POST['password']);
                 $user = new User();
-                $user->nickname = $_POST['username'];
-                $user->password = $_POST['password'];
-                // $user->contact = "";
+                $user->nickname = $request->request->get("username");
+                $user->password = $request->request->get("password");
                 $manager->persist($user);
                 $manager->flush();
-                $_SESSION['user'] = $user;
-                header('Location: /display');
+                $request->getSession()->set('user', $user);
+                return $this->redirectToRoute('display');
             }
         } else {
-            include "../templates/registerForm.php";
+            return $this->render('registerForm.php');
         }
     }
 }

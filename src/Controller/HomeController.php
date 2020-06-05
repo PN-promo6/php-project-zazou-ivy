@@ -2,18 +2,23 @@
 
 namespace Controller;
 
+use display;
 use Entity\User;
+use Entity\Opening;
+use ludk\Http\Request;
+use ludk\Http\Response;
+use ludk\Controller\AbstractController;
 
-class HomeController
+class HomeController extends AbstractController
 {
-    public function display()
+    public function display(Request $request): Response
     {
-        global $openingRepo;
-        global $userRepo;
-        global $orm;
+        $openingRepo = $this->getOrm()->getRepository(Opening::class);
+        $userRepo = $this->getOrm()->getRepository(User::class);
+        $orm = $this->getOrm();
         $openings = array();
-        if (isset($_GET['search'])) {
-            $search = $_GET['search'];
+        if ($request->query->has('search')) {
+            $search = $request->query->get('search');
             if (strpos($search, "@") === 0) {
                 $userRepo = $orm->getRepository(User::class);
                 $nickname = substr($search, 1);
@@ -31,6 +36,9 @@ class HomeController
         } else {
             $openings = $openingRepo->findAll();
         }
-        include "../templates/display.php";
+        $data = array(
+            "openings" => $openings
+        );
+        return $this->render('display.php', $data);
     }
 }

@@ -1,6 +1,11 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css">
 
+<?php
+if (isset($errorMsg)) {
+    echo "<div class='alert alert-warning' role='alert'>$errorMsg</div>";
+}
+?>
 <div class="container">
     <div class="text-center">
         <button class="btn btn-warning text-white" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
