@@ -36,16 +36,16 @@
                     <?php if (!isset($_SESSION['user'])) { ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="?action=login" role="button" type="submit">Login</a>
+                            <a class="nav-link" href="/login" role="button" type="submit">Login</a>
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="?action=register" role="button" type="submit">Sign Up</a>
+                            <a class="nav-link" href="/register" role="button" type="submit">Sign Up</a>
                         </li>
 
                     <?php } else { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="?action=logout" role="button" type="submit">Logout </a>
+                            <a class="nav-link" href="/logout" role="button" type="submit">Logout </a>
                         </li>
                     <?php  } ?>
                     <!-- <li class="nav-item">

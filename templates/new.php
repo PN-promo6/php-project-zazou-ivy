@@ -4,7 +4,7 @@
     <button class="btn btn-warning text-white text-center" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         AJOUTER UN OPENING
     </button>
-    <form class="collapse" id="collapseExample" action="/?action=new" method="post">
+    <form class="collapse" id="collapseExample" action="/new" method="post">
         <h3>Votre opening</h3>
         <fieldset>
             <input placeholder="Nom de l'anime" type="text" tabindex="1" name="anime" required autofocus>

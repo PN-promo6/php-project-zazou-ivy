@@ -22,7 +22,7 @@ class OpeningController
             $newOpening->user = $_SESSION['user'];
             $manager->persist($newOpening);
             $manager->flush();
-            header('Location:/?action=display');
+            header('Location:/display');
         } else {
             $errorMsg = "Tous les champs n'ont pas étés remplis. Merci de remplir tous les champs";
         }

@@ -26,7 +26,7 @@ $userRepo = $orm->getRepository(User::class);
 // $opening6->user = $user2;
 // $openings = array($opening1, $opening2, $opening3, $opening4, $opening5, $opening6);
 
-$action = $_GET["action"] ?? "display";
+$action = substr(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), 1);
 switch ($action) {
 
         //   ==========================================register======================================                      
