@@ -46,7 +46,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="?action=logout" role="button" type="submit">Logout </a>
                         </li>
-                    <?php } ?>
+                    <?php  } ?>
                     <!-- <li class="nav-item">
                         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Sign up</button>
                     </li> -->
@@ -58,7 +58,7 @@
                         <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </ul>
-            </div>
+
     </nav>
     </div>
     <!-- *************************HEADER********************************* -->
@@ -77,13 +77,20 @@
             <strong> Retrouvez le top de la semaine</strong>
         </h2>
     </article>
+    <?php if (isset($_SESSION['user'])) { ?>
+
+        <?php include "../templates/new.php" ?>
+
+        <!-- <button>AJOUTER UN OPENING</button> -->
+
+    <?php } ?>
 
     <div class="container mt-4">
         <div class="row">
 
             <?php
             foreach ($openings as $opening) { ?>
-                <div class="card col-lg-5 my-4 mx-4 shadow-sm">
+                <div class="card col-lg-4  my-2 mx-2 shadow-sm">
                     <h5 class="my-1 font-weight-normal"><em> <a href="?search=@<?php echo $opening->user->nickname ?>">@_<?php echo $opening->user->nickname ?></a> </em></h5>
                     <img src="<?php echo $opening->picture; ?>" class="card-img-top" alt="opening_image">
                     <div class="card-body">
@@ -108,6 +115,7 @@
                 </div>
             <?php  } ?>
         </div>
+
     </div>
     <!-- ***************************************FOOTER******************************************** -->
     <hr>
