@@ -1,6 +1,6 @@
 body{
 
-   /* background-image:  url("../images/lie.jpg"); */
+   background-image:  url("../images/arches.png");
    background-color: #F7F7F7; 
    font-family: "lato", sans-serif;
 }
@@ -37,4 +37,10 @@ color: #073762;
 #topWeek{
 text-align: center;
 margin: 30px;
+}
+
+#your_opening{
+   color: tomato;
+   font-family: 'Skranji', cursive;
+
 }
