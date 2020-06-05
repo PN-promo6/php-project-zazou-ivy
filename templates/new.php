@@ -1,8 +1,11 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-<div class="container" id="display">
-    <form id="contact" action="/?action=new" method="post">
-        <h3>Votre Post</h3>
+<div class="container">
+    <button class="btn btn-warning text-white text-center" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        AJOUTER UN OPENING
+    </button>
+    <form class="collapse" id="collapseExample" action="/?action=new" method="post">
+        <h3>Votre opening</h3>
         <fieldset>
             <input placeholder="Nom de l'anime" type="text" tabindex="1" name="anime" required autofocus>
         </fieldset>
@@ -22,7 +25,7 @@
             <input placeholder="Lien de l'image" type="url" name="picture" tabindex="4" required>
         </fieldset>
         <fieldset>
-            <button type="submit">ADD NEW OPENING</button>
+            <button type="submit">Ajouter l'opening</button>
         </fieldset>
     </form>
 </div>

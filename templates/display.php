@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@515&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/5bb1d77498.js" crossorigin="anonymous"></script>
+    <script src="script.js" type="text/javascript"></script>
 
 </head>
 
@@ -81,8 +82,6 @@
 
         <?php include "../templates/new.php" ?>
 
-        <!-- <button>AJOUTER UN OPENING</button> -->
-
     <?php } ?>
 
     <div class="container mt-4">
@@ -90,7 +89,7 @@
 
             <?php
             foreach ($openings as $opening) { ?>
-                <div class="card col-lg-4  my-2 mx-2 shadow-sm">
+                <div class="card col-lg-5  my-4 mx-4 shadow-sm">
                     <h5 class="my-1 font-weight-normal"><em> <a href="?search=@<?php echo $opening->user->nickname ?>">@_<?php echo $opening->user->nickname ?></a> </em></h5>
                     <img src="<?php echo $opening->picture; ?>" class="card-img-top" alt="opening_image">
                     <div class="card-body">
