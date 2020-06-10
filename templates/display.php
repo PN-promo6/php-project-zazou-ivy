@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/5bb1d77498.js" crossorigin="anonymous"></script>
     <script src="script.js" type="text/javascript"></script>
+    <link rel="shortcut icon" type="image/gif" href="../public/images/favicon.png" />
 
 </head>
 
@@ -65,7 +66,7 @@
     <!-- *************************HEADER********************************* -->
     <header id="image">
 
-        <h1>Vos meilleurs Openings d'anime !</h1>
+        <!-- <h1>Vos meilleurs Openings d'anime !</h1> -->
 
     </header>
 
