@@ -12,37 +12,97 @@
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+        <div class="container">
+            <a id="logo" class="navbar-brand" href="#">Kaîko-bu! 漫画</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li> -->
 
-    <div class="container">
+                    <?php if (!isset($_SESSION['user'])) { ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login" role="button" type="submit">LOGIN</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register" role="button" type="submit">SIGN UP</a>
+                        </li>
+
+                    <?php } else { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout" role="button" type="submit">LOGOUT</a>
+                        </li>
+                    <?php  } ?>
+                    <!-- <li class="nav-item">
+                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Sign up</button>
+                    </li> -->
+
+                </ul>
+                <ul class="ml-auto">
+                    <form method="get" class="form-inline my-lg-0">
+                        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </ul>
+
+    </nav>
+    <div class="container my-5">
         <div class="row">
-            <div class="col">
-                <blockquote class="blockquote text-center">
-                    <p class="mb-0 mt-5">Nous sommes contents de vous revoir !</p>
-                    <footer class="blockquote-footer">Maybe someone famous from <cite>Internet</cite></footer>
-                </blockquote>
+            <div class="col-lg-3 col-md-2 "></div>
+            <div class="col-lg-6 col-md-8 login-box ">
+                <div class="col-lg-12">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 login-title">
+                    Login
+                </div>
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form class="form-signin" method="POST" action="/login">
+                            <?php
+                            if (isset($errorMsg)) {
+                                echo "<div class='alert alert-warning' role='alert'>$errorMsg</div>";
+                            }
+                            ?>
+
+                            <div class="form-group">
+                                <label class="form-control-label">USERNAME</label>
+                                <input type="text" class="form-control" name="username" placeholder="Nickname" required="" autofocus="">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">PASSWORD</label>
+                                <input type="password" class="form-control" name="password" placeholder="Password" required="" i>
+                            </div>
+
+                            <div class=" col-lg-12 loginbttm">
+                                <div class="col-lg-6 login-btm login-text">
+                                    <!-- Error Message -->
+                                </div>
+                                <div class="col-lg-6 login-btm login-button">
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit">LOGIN</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <form class="form-signin" method="POST" action="/login">
-                    <h2 class="form-signin-heading">Welcome </h2>
-                    <?php
-                    if (isset($errorMsg)) {
-                        echo "<div class='alert alert-warning' role='alert'>$errorMsg</div>";
-                    }
-                    ?>
-                    <input type="text" class="form-control" name="username" placeholder="Nickname" required="" autofocus="" />
-                    <input type="password" class="form-control" name="password" placeholder="Password" required="" />
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-                </form>
-            </div>
-        </div>
-    </div>
+
 </body>
 
 </html>

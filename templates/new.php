@@ -13,7 +13,7 @@ if (isset($errorMsg)) {
         </button>
     </div>
     <form class="collapse" id="collapseExample" action="/new" method="post">
-        <h2 id="your_opening" class="my-4 font-weight-bold"><i class="far fa-grin-hearts"></i> Votre opening</h2>
+        <h2 id="your_opening" class="my-4 font-weight-bold"> Votre opening</h2>
 
         <!-- *************Nom anime**************** -->
         <div class="form-group">

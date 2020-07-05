@@ -30,7 +30,7 @@ class HomeController extends AbstractController
                 }
             } else {
                 $openings = $openingRepo->findBy(
-                    array("description" => $search)
+                    array("anime" => "%$search%")
                 );
             }
         } else {

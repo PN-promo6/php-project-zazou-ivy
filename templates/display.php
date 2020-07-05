@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Skranji&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@515&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/5bb1d77498.js" crossorigin="anonymous"></script>
     <script src="script.js" type="text/javascript"></script>
@@ -30,23 +31,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <!-- <li class="nav-item active">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
+                    </li> -->
 
                     <?php if (!isset($_SESSION['user'])) { ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/login" role="button" type="submit">Login</a>
+                            <a class="nav-link" href="/login" role="button" type="submit">LOGIN</a>
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/register" role="button" type="submit">Sign Up</a>
+                            <a class="nav-link" href="/register" role="button" type="submit">SIGN UP</a>
                         </li>
 
                     <?php } else { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout" role="button" type="submit">Logout </a>
+                            <a class="nav-link" href="/logout" role="button" type="submit">LOGOUT</a>
                         </li>
                     <?php  } ?>
                     <!-- <li class="nav-item">
@@ -72,12 +73,10 @@
 
     <!-- *********************************************************************** -->
 
-    <article id="topWeek">
+    <article class="my-5" id="topWeek">
+        <h5 class="py-4"> Kaîko-bu est un site qui vous propose tous les classiques des opening d'anime japonais. </h5>
 
-        <p> <i class="fas fa-music"></i> PLAYLIST </p>
-        <h2>
-            <strong> Retrouvez le top de la semaine</strong>
-        </h2>
+        <p> <i class="fas fa-music"></i> <strong> PLAYLIST </strong></p>
     </article>
     <?php if (isset($_SESSION['user'])) { ?>
         {% include '../templates/new.php' %}
@@ -85,17 +84,17 @@
     <?php } ?>
 
     <div class="container mt-4">
-        <div class="row">
+        <div class="row d-flex justify-content-center">
 
             <?php
             foreach ($openings as $opening) { ?>
-                <div class="card col-lg-5  my-4 mx-4 shadow-sm">
-                    <h5 class="my-1 font-weight-normal"><em> <a href="?search=@<?php echo $opening->user->nickname ?>">@_<?php echo $opening->user->nickname ?></a> </em></h5>
+                <div class="card col-md-5 mx-4 shadow px-3 mb-5 bg-white rounded ">
+                    <h5 class="my-1 font-weight-normal"><em> <i class="fas fa-user-circle"></i><a href="?search=@<?php echo $opening->user->nickname ?>"> @_<?php echo $opening->user->nickname ?></a> </em></h5>
                     <img src="<?php echo $opening->picture; ?>" class="card-img-top" alt="opening_image">
                     <div class="card-body">
                         <ul class="list-unstyled mt-3 mb-4">
                             <li>
-                                <h2 id="title"><strong><?php echo $opening->anime; ?></strong></h2>
+                                <h3 id="title"><strong><?php echo $opening->anime; ?></strong></h3>
                             </li>
                             <li>
                                 <h5><strong>Titre : </strong><?php echo $opening->song; ?></h5>
@@ -106,10 +105,8 @@
                             <li>
                                 <h5><strong>Description : </strong><?php echo $opening->description; ?></h6>
                             </li>
-                            <li><a href="<?php echo $opening->url_song; ?>" target="blank">Lien vers l'opening</a></li>
+                            <li><a href="<?php echo $opening->url_song; ?>" target="blank"><i class="fas fa-arrow-circle-right"></i> Lien vers l'opening</a></li>
                         </ul>
-                        <a href="#" class="btn btn-outline-primary">Add to list</a>
-                        <p class="card-text"><small class="text-muted"></small></p>
                     </div>
                 </div>
             <?php  } ?>
@@ -119,7 +116,6 @@
     <!-- ***************************************FOOTER******************************************** -->
     <hr>
     <footer class="blog-footer text-center">
-        <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
         <p>
             <a href="#">Back to top</a>
         </p>
